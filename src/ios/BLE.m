@@ -29,9 +29,12 @@ CBUUID *redBearLabsServiceUUID;
 CBUUID *adafruitServiceUUID;
 CBUUID *lairdServiceUUID;
 CBUUID *blueGigaServiceUUID;
+CBUUID *ubloxServiceUUID;
 CBUUID *serialServiceUUID;
 CBUUID *readCharacteristicUUID;
 CBUUID *writeCharacteristicUUID;
+
+
 
 -(void) readRSSI
 {
@@ -212,7 +215,8 @@ CBUUID *writeCharacteristicUUID;
     adafruitServiceUUID = [CBUUID UUIDWithString:@ADAFRUIT_SERVICE_UUID];
     lairdServiceUUID = [CBUUID UUIDWithString:@LAIRD_SERVICE_UUID];
     blueGigaServiceUUID = [CBUUID UUIDWithString:@BLUEGIGA_SERVICE_UUID];
-    NSArray *services = @[redBearLabsServiceUUID, adafruitServiceUUID, lairdServiceUUID, blueGigaServiceUUID];
+    ubloxServiceUUID = [CBUUID UUIDWithString:@UBLOX_SERVICE_UUID];
+    NSArray *services = @[redBearLabsServiceUUID, adafruitServiceUUID, lairdServiceUUID, blueGigaServiceUUID, ubloxServiceUUID ];
     [self.CM scanForPeripheralsWithServices:services options: nil];
 #else
     [self.CM scanForPeripheralsWithServices:nil options:nil]; // Start scanning
@@ -549,7 +553,14 @@ static bool done = false;
                 readCharacteristicUUID = [CBUUID UUIDWithString:@BLUEGIGA_CHAR_TX_UUID];
                 writeCharacteristicUUID = [CBUUID UUIDWithString:@BLUEGIGA_CHAR_RX_UUID];
                 break;
+            } else if ([service.UUID isEqual:ubloxServiceUUID]) {
+                NSLog(@"uBlox Bluetooth");
+                serialServiceUUID = ubloxServiceUUID;
+                readCharacteristicUUID = [CBUUID UUIDWithString:@UBLOX_CHAR_TX_UUID];
+                writeCharacteristicUUID = [CBUUID UUIDWithString:@UBLOX_CHAR_RX_UUID];
+                break;
             } else {
+                NSLog(@"OTHER %@", service.UUID);
                 // ignore unknown services
             }
         }

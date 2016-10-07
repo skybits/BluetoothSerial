@@ -33,4 +33,10 @@
 #define LAIRD_CHAR_TX_UUID                       "569a2000-b87f-490c-92cb-11ba5ea5167c"
 #define LAIRD_CHAR_RX_UUID                       "569a2001-b87f-490c-92cb-11ba5ea5167c"
 
+// uBLOX 
+#define UBLOX_SERVICE_UUID                          "2456e1b9-26e2-8f83-e744-f34f01e9d701"
+#define UBLOX_CHAR_TX_UUID                          "2456e1b9-26e2-8f83-e744-f34f01e9d703"
+#define UBLOX_CHAR_RX_UUID                          "2456e1b9-26e2-8f83-e744-f34f01e9d703"
+
+
 #define RBL_BLE_FRAMEWORK_VER                    0x0200
