@@ -638,12 +638,14 @@ static bool done = false;
 {
     if (!isConnected)
         return;
-
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     if (rssi != peripheral.RSSI.intValue)
     {
         rssi = peripheral.RSSI.intValue;
         [[self delegate] bleDidUpdateRSSI:activePeripheral.RSSI];
     }
+    #pragma clang diagnostic pop
 }
 
 @end
