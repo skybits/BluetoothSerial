@@ -72,7 +72,7 @@ module.exports = {
     // calls the success callback when new data is available with an ArrayBuffer
     subscribeRawData: function (success, failure) {
 
-        successWrapper = function(data) {
+        var successWrapper = function(data) {
             // Windows Phone flattens an array of one into a number which
             // breaks the API. Stuff it back into an ArrayBuffer.
             if (typeof data === 'number') {
