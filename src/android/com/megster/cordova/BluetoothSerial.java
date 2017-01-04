@@ -293,7 +293,7 @@ public class BluetoothSerial extends CordovaPlugin {
 		pairingIntent.putExtra(BluetoothDevice.EXTRA_PAIRING_VARIANT, BluetoothDevice.PAIRING_VARIANT_PASSKEY_CONFIRMATION);
 		pairingIntent.putExtra(BluetoothDevice.EXTRA_PAIRING_KEY, passkey);
 		pairingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		cordova.startActivityForResult(pairingIntent, 110);
+		cordova.startActivityForResult(this, pairingIntent, 110);
 		
 		callbackContext.success("PAIRING tried");
 	}
