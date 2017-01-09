@@ -317,7 +317,7 @@ public class BluetoothSerial extends CordovaPlugin {
 
             enableBluetoothCallback = null;
         } else {
-			Log.d(TAG, "requestCode +++ " + requestCode);
+			Log.d(TAG, "requestCode +++ " + requestCode, "resultCode +++ " + resultCode, data.toString());
 		}
     }
 
